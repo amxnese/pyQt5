@@ -24,58 +24,58 @@ class MainWindow(qtw.QWidget):
 
     
     # Setting a Combo Box
-    combo = qtw.QComboBox(editable=True, insertPolicy=qtw.QComboBox.InsertAtTop)
+    my_combo = qtw.QComboBox(editable=True, insertPolicy=qtw.QComboBox.InsertAtTop)
 
     # Adding Items To The Combo Box
-    combo.addItem("Python")
-    combo.addItem("C++")
-    combo.addItem("C")
-    combo.addItem("Java")
-    combo.addItem("JavaScript")
-    combo.addItem("Rust")
+    my_combo.addItem("Python")
+    my_combo.addItem("C++")
+    my_combo.addItem("C")
+    my_combo.addItem("Java")
+    my_combo.addItem("JavaScript")
+    my_combo.addItem("Rust")
     lst = ["Python", "C++", "C", "JavaScript", "Rust"]
 
     # Setting The Combo Box Font 
-    combo.setFont(qtg.QFont("helvetica", 20))
+    my_combo.setFont(qtg.QFont("helvetica", 20))
 
     # Adding The Combo Widget To The Layout
-    self.layout().addWidget(combo)
+    self.layout().addWidget(my_combo)
 
     # Setting a Button For The Combo Widget
     combo_button = qtw.QPushButton("Confirm", clicked= lambda : combo_press())
     def combo_press():
       # Doing Something in The Label Based On The currentText Chosen
-      if combo.currentText() == "Java":
+      if my_combo.currentText() == "Java":
         label.setText("Come On, Really!!")
-      elif combo.currentText() in lst:
+      elif my_combo.currentText() in lst:
         label.setText(f"You Know Your Stuff Don't You :)")
       else:
-        label.setText(f"You Have Chosen {combo.currentText()}")
+        label.setText(f"You Have Chosen {my_combo.currentText()}")
     # Setting The Button Font
     combo_button.setFont(qtg.QFont("helvetica", 15))
     # Adding The Button Wiget To The Layout
     self.layout().addWidget(combo_button)  
 
     # Setting a Spin Box
-    spin = qtw.QSpinBox(
+    my_spin = qtw.QSpinBox(
       value=10, 
       maximum=25, 
       minimum=0, 
       singleStep=1,
       prefix="I Have ",
       suffix=" Years of Experience")
-    spin.setFont(qtg.QFont("helvetica", 15))
+    my_spin.setFont(qtg.QFont("helvetica", 15))
     # Adding The Spin Box To The Layout
-    self.layout().addWidget(spin)
+    self.layout().addWidget(my_spin)
 
     # Setting a Button For The Spin Box
     spin_button = qtw.QPushButton("Confirm", clicked=lambda: spin_press())
     def spin_press():
-      if spin.value() <= 3:
+      if my_spin.value() <= 3:
         label.setText(f"You Are an Entry Level Devoloper")
-      elif spin.value() <= 5:
+      elif my_spin.value() <= 5:
         label.setText("You Are a Junior Developer")
-      elif spin.value() <= 8:
+      elif my_spin.value() <= 8:
         label.setText("You Are an Intermediate Developer")
       else:
         label.setText("You Are a Senior Developer")
@@ -86,6 +86,38 @@ class MainWindow(qtw.QWidget):
 
     # Adding The Spin Button Widget To The Layout
     self.layout().addWidget(spin_button)
+
+    # Create a Text Box
+    my_text = qtw.QTextEdit(
+      lineWrapMode=qtw.QTextEdit.FixedColumnWidth,
+      lineWrapColumnOrWidth=69,
+      placeholderText="Type Here",
+      readOnly=False,
+      acceptRichText=False,
+      plainText="hi"
+    )
+
+    # Setting The Text Box Font
+    my_text.setFont(qtg.QFont("helvetica", 15))
+
+    # Adding The TextBox Widget To The Layout
+    self.layout().addWidget(my_text)
+
+    # Setting a Button For The TextBox
+    my_text_button = qtw.QPushButton("Confirm", clicked=lambda: text_press())
+
+    # Defining The text_press Function
+    def text_press():
+      label.setText(my_text.toPlainText())
+      splitted = my_text.toPlainText().split()
+      word = "Word" if len(splitted) == 1 else "Words"
+      my_text.setPlainText(f"You Typed {len(splitted)} {word}")
+      
+    # Setting The TextBox Button Font
+    my_text_button.setFont(qtg.QFont("helvetica", 15))
+
+    # Adding The TextBox Button Widget To The Layout
+    self.layout().addWidget(my_text_button)
 
     # Showing My App
     self.show()
