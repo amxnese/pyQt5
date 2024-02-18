@@ -31,6 +31,7 @@ class Ui_MainWindow(object):
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
+        self.statusbar.showMessage("Ready...")
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -38,6 +39,7 @@ class Ui_MainWindow(object):
     def press_it(self):
         lst = ["Boom!!", "Bingo!!", "Haa!!", "Welcome"]
         self.label.setText(lst[randint(0,3)])
+        self.statusbar.showMessage("")
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate

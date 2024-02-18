@@ -274,11 +274,13 @@ class Ui_MainWindow(object):
 
     # Handling The "=" Button
     def assign_it(self):
+        self.statusbar.showMessage("")
         try:
             # Replacing The 'x' With '*' So We Can Evaluate It
             eq = self.outputLabel.text().replace('x', '*')
             self.outputLabel.setText(str(eval(eq)))
         except:
+            self.statusbar.showMessage("invalid input")
             self.outputLabel.setText("Error")
 
     def retranslateUi(self, MainWindow):
