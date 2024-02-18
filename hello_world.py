@@ -47,7 +47,6 @@ class Ui_MainWindow(object):
         self.pushButton.setText(_translate("MainWindow", "Press Me!"))
         self.label.setText(_translate("MainWindow", "Hello World!"))
 
-
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
