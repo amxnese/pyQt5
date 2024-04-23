@@ -1,4 +1,5 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
+import re
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -259,18 +260,12 @@ class Ui_MainWindow(object):
 
     # Handling The "." Button
     def dot_it(self):
-            # Declaring The Variable last To Store The Last Longest Valid Number From The Output Label
-            last = ""
-            # Starting From The End
-            for i in range(len(self.outputLabel.text())-1, 0, -1):
-                last += self.outputLabel[i]
-                ops = ["-", "+", "*", "/"]
-                # Checking if We Hit an Operation So We Can Stop
-                if last[-1] in ops:
-                    break
-            # Checking if The Number We Got Hasn't a Point So We Can Gime Him One
-            if "." not in last:
-                self.outputLabel.setText(f"{self.outputLabel.text()}.")
+        # Getting the current output
+        text = self.outputLabel.text()
+        # Getting the output that came after the last operator
+        last = re.split(r'[-+/x]', text)[-1]
+        # Checking if it has a period, if it doesn't we add one
+        self.outputLabel.setText(f"{text}.") if '.' not in last else None
 
     # Handling The "=" Button
     def assign_it(self):
