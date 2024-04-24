@@ -27,13 +27,16 @@ class MainWindow(qtw.QWidget):
     
     # Defining The press_it Function
     def press_it():
-      # Removing The label Widget
-      form_layout.removeWidget(label)
-      label.deleteLater()
-      # Creating a New Widget To Welcome The User
-      label1 = qtw.QLabel(f"Welcome To The App {f_name.text()} {l_name.text()}")
-      label1.setFont(qtg.QFont("helvetica", 20))
-      form_layout.addRow(label1)
+      if f_name.text() and l_name.text() and label:
+        # Removing The label Widget
+        form_layout.removeWidget(label)
+        label.deleteLater()
+        # Creating a New Widget To Welcome The User
+        label1 = qtw.QLabel(f"Welcome To The App {f_name.text()} {l_name.text()}")
+        label1.setFont(qtg.QFont("helvetica", 20))
+        f_name.setText('')
+        l_name.setText('')
+        form_layout.addRow(label1)
 
     # Showing App
     self.show()
