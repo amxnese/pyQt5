@@ -256,7 +256,7 @@ class Ui_MainWindow(object):
     # Handling The ">>" Button
     def remove_it(self):
         # Removing The Last Item From The Output Label
-        self.outputLabel.setText( self.outputLabel.text()[:-1])
+        self.outputLabel.setText(self.outputLabel.text()[:-1])
 
     # Handling The "." Button
     def dot_it(self):
